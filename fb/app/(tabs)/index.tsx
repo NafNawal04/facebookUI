@@ -75,7 +75,6 @@ const posts = [
 export default function Home() {
   return (
     <View style={styles.container}>
-      {/* Header */}
       <View style={styles.header}>
         <Text style={styles.logo}>facebook</Text>
         <View style={styles.headerIcons}>
@@ -97,7 +96,6 @@ export default function Home() {
         showsVerticalScrollIndicator={false}
       >
 
-      {/* What's on your mind */}
       <View style={styles.inputBox}>
         <Image source={stories[0].image} style={styles.profilePic} />
         <TextInput
@@ -114,7 +112,10 @@ export default function Home() {
           style={styles.storiesContainer}
         >
           {stories.map((item) => (
-            <View key={item.id} style={styles.storyItem}>
+            <View 
+            key={item.id} 
+            style={styles.storyItem}
+            >
               <Image source={item.image} style={styles.storyImage} />
               {!item.isCreate && (
                 <>
@@ -141,7 +142,6 @@ export default function Home() {
           ))}
         </ScrollView>
 
-      {/* Posts */}
       <FlatList
         data={posts}
         keyExtractor={item => item.id}
@@ -149,7 +149,6 @@ export default function Home() {
         style={styles.postsList}
         renderItem={({ item }) => (
           <View style={styles.postCard}>
-            {/* Post Header */}
             <View style={styles.postHeader}>
               <Image source={item.user.avatar} style={styles.postAvatar} />
               <View>
@@ -162,13 +161,10 @@ export default function Home() {
 
               </TouchableOpacity>
             </View>
-            {/* Post Text */}
             {item.text ? <Text style={styles.postText}>{item.text}</Text> : null}
-            {/* Post Image */}
             {item.image ? (
               <Image source={item.image} style={styles.postImage} />
             ) : null}
-            {/* Post Actions */}
             <View style={styles.postActions}>
               <View style={styles.postStatsRow}>
                 <Text style={styles.statsTextLeft}>👍😆❤️ {item.reactions}</Text>
